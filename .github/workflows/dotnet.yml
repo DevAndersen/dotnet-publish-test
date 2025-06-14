@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: 1.4
+  RELEASE: 1.5
 
 jobs:
   validate:
