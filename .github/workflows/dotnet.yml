@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: "1.16"
+  RELEASE: "1.17"
 
 jobs:
   validate:
@@ -60,8 +60,6 @@ jobs:
       with:
         name: release-ubuntu-latest-${{ env.RELEASE }}
         path: ./artifacts
-    - name: Debug
-      run: ls ./artifacts
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
