@@ -42,7 +42,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: release-${{ matrix.os }}
+        name: release-${{ matrix.os }}-${{ env.RELEASE }}
         path: ./release/dotnet-publish-test${{ matrix.os == 'windows-latest' && '.exe' || '' }}
         retention-days: 1
 
@@ -53,12 +53,12 @@ jobs:
     - name: Download Windows artifact
       uses: actions/download-artifact@v4
       with:
-        name: release-windows-latest
+        name: release-windows-latest-${{ env.RELEASE }}
         path: ./artifacts
     - name: Download Linux artifact
       uses: actions/download-artifact@v4
       with:
-        name: release-ubuntu-latest
+        name: release-ubuntu-latest-${{ env.RELEASE }}
         path: ./artifacts
     - name: Release
       uses: actions/create-release@v1
