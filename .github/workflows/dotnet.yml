@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: "1.15"
+  RELEASE: "1.16"
 
 jobs:
   validate:
@@ -60,16 +60,6 @@ jobs:
       with:
         name: release-ubuntu-latest-${{ env.RELEASE }}
         path: ./artifacts
-    - name: Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ env.RELEASE }}
-        release_name: Release ${{ env.RELEASE }}
-        body: |
-          This is release ${{ env.RELEASE }}
-        prerelease: false
     - name: Debug
       run: ls ./artifacts
     - name: Release
