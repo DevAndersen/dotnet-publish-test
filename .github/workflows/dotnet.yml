@@ -55,7 +55,7 @@ jobs:
     - name: Download Linux artifact
       uses: actions/download-artifact@v4
       with:
-        name: release-linux-latest
+        name: release-ubuntu-latest
         path: ./artifacts
     - name: Release
       uses: actions/create-release@v1
