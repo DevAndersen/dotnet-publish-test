@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: "1.12"
+  RELEASE: "1.13"
 
 jobs:
   validate:
@@ -72,13 +72,15 @@ jobs:
         prerelease: false
     - name: Debug
       run: ls ./artifacts
-    - name: Upload Windows artifacts to release
-      uses: svenstaro/upload-release-action@v2
+    - name: Release
+      uses: softprops/action-gh-release@v2
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./artifacts/dotnet-publish-test.exe
-    - name: Upload Linux artifacts to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./artifacts/dotnet-publish-test
+        name: Release ${{ env.RELEASE }}
+        tag_name: ${{ env.RELEASE }}
+        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        body: |
+          This is release ${{ env.RELEASE }}
+        prerelease: false
+        files: |
+          ./artifacts/dotnet-publish-test.exe
+          ./artifacts/dotnet-publish-test
