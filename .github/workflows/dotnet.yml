@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: 1.3
+  RELEASE: 1.4
 
 jobs:
   validate:
@@ -65,10 +65,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: $RELEASE
-        release_name: Release $RELEASE
+        tag_name: ${{ env.RELEASE }}
+        release_name: Release ${{ env.RELEASE }}
         body: |
-          This is release $RELEASE
+          This is release ${{ env.RELEASE }}
         prerelease: false
     - name: Upload artifacts to release
       uses: svenstaro/upload-release-action@v2
