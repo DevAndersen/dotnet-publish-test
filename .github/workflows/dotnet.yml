@@ -24,4 +24,9 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish /p:DebugType=None /p:DebugSymbols=false /p:PublishSingleFile=true --self-contained
+      run: dotnet publish /p:DebugType=None /p:DebugSymbols=false /p:PublishSingleFile=true --self-contained --output ./release
+    - name: Release
+      uses: actions/upload-artifact@v4
+      with:
+        name: dotnet-publish-test
+        path: ./release
