@@ -77,7 +77,6 @@ jobs:
       with:
         name: Release ${{ env.RELEASE }}
         tag_name: ${{ env.RELEASE }}
-        token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
         body: |
           This is release ${{ env.RELEASE }}
         prerelease: false
