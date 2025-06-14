@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: 1.6
+  RELEASE: 1.7
 
 jobs:
   validate:
@@ -75,4 +75,4 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file_glob: true
-        file: ./artifacts/dotnet-publish-test*-${{ env.RELEASE }}
+        file: ./artifacts/dotnet-publish-test*
