@@ -21,7 +21,21 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      
+
+  publish:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Publish
+      run: dotnet publish /p:DebugType=None /p:DebugSymbols=false /p:PublishSingleFile=true --self-contained --output ./release
+  
   publish-windows:
     runs-on: windows-latest
     needs: validate
