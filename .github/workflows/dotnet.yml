@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: "1.11"
+  RELEASE: "1.12"
 
 jobs:
   validate:
@@ -76,9 +76,9 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./artifacts/release-windows-latest-${{ env.RELEASE }}
+        file: ./artifacts/dotnet-publish-test.exe
     - name: Upload Linux artifacts to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./artifacts/release-ubuntu-latest-${{ env.RELEASE }}
+        file: ./artifacts/dotnet-publish-test
