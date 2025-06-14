@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  RELEASE: 1.8
+  RELEASE: 1.9
 
 jobs:
   validate:
@@ -70,11 +70,6 @@ jobs:
         body: |
           This is release ${{ env.RELEASE }}
         prerelease: false
-    - name: Upload Windows artifacts to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./artifacts/release-windows-latest-${{ env.RELEASE }}
     - name: Upload Linux artifacts to release
       uses: svenstaro/upload-release-action@v2
       with:
