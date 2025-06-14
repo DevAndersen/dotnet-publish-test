@@ -70,9 +70,13 @@ jobs:
         body: |
           This is release ${{ env.RELEASE }}
         prerelease: false
-    - name: Upload artifacts to release
+    - name: Upload Windows artifacts to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file_glob: true
-        file: ./artifacts/dotnet-publish-test*
+        file: ./artifacts/release-windows-latest-${{ env.RELEASE }}
+    - name: Upload Linux artifacts to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./artifacts/release-ubuntu-latest-${{ env.RELEASE }}
