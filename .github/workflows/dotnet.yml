@@ -30,3 +30,13 @@ jobs:
       with:
         name: dotnet-publish-test
         path: ./release
+    - name: Release_2
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          This is release 1.0
+        prerelease: false
